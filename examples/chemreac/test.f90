@@ -1,7 +1,7 @@
 program test
 
-  use pcm_model
-  use pcm_utils
+  use tf2_model
+  use tf2_utils
 
   implicit none
 

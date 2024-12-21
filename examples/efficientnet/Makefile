@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g -pg -std=c++17 -Wall -I${PYCOMET_INC} -I${TF_INC}
+CXXFLAGS = -g -pg -std=c++17 -Wall -I${TF2_INC} -I${TF_INC}
 LDFLAGS = -L${TF_LIB} -ltensorflow
 PROGRAM = test.x
 SRCS = test.cpp

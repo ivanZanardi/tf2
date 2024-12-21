@@ -12,7 +12,7 @@ python model.py
 
 text="> Compiling ..."
 print_text "\${text}" "="
-load_pycomet true
+load_tf2 true
 make clean
 make
 

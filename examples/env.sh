@@ -9,13 +9,13 @@ load_python() {
   export TF_CPP_MIN_LOG_LEVEL=3
 }
 
-load_pycomet() {
+load_tf2() {
   eval use_gpu="${1}"
   # Loading the PyCOMET module
   if ${use_gpu}; then
-    module load pycomet/1.0-gcc-9.3.0-cuda-11.2.0-tf-2.10.0-gpu
+    module load tf2/1.0-gcc-9.3.0-cuda-11.2.0-tf-2.10.0-gpu
   else
-    module load pycomet/1.0-gcc-11.3.0-tf-2.10.0-cpu
+    module load tf2/1.0-gcc-11.3.0-tf-2.10.0-cpu
   fi
   # Set proper environmental variables
   export TF_CPP_MIN_LOG_LEVEL=3
