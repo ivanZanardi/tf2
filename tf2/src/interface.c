@@ -1,25 +1,25 @@
 #include "interface.h"
 
 
-pycomet::model *pycomet::init_model(char *inpfile) {
+tf2::model *tf2::init_model(char *inpfile) {
   std::string file(inpfile);
-  return new pycomet::model(file);
+  return new tf2::model(file);
 }
 
-std::int32_t pycomet::get_inp_tot_dim(pycomet::model *mdl) {
+std::int32_t tf2::get_inp_tot_dim(tf2::model *mdl) {
   return mdl->inp_tot_dim;
 }
 
-std::int32_t pycomet::get_out_tot_dim(pycomet::model *mdl) {
+std::int32_t tf2::get_out_tot_dim(tf2::model *mdl) {
   return mdl->out_tot_dim;
 }
 
-void pycomet::delete_model(pycomet::model *mdl) {
+void tf2::delete_model(tf2::model *mdl) {
   mdl->~model();
 }
 
-void pycomet::call_model_float(
-  pycomet::model *mdl,
+void tf2::call_model_float(
+  tf2::model *mdl,
   std::int32_t *nb_pts,
   float *inputs,
   float *outputs
@@ -33,8 +33,8 @@ void pycomet::call_model_float(
   std::copy(y.begin(), y.end(), outputs);
 }
 
-void pycomet::call_model_double(
-  pycomet::model *mdl,
+void tf2::call_model_double(
+  tf2::model *mdl,
   std::int32_t *nb_pts,
   double *inputs,
   double *outputs

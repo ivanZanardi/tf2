@@ -1,10 +1,10 @@
-#ifndef pycomet_utils_ops_h_
-#define pycomet_utils_ops_h_
+#ifndef tf2_utils_ops_h_
+#define tf2_utils_ops_h_
 
 #include "../includes.h"
 #include "data.h"
 
-namespace pycomet {
+namespace tf2 {
 
   /**
    * @brief Utility functions for vector operations.
@@ -75,22 +75,22 @@ namespace pycomet {
      *          array will be returned.
      */
     template <typename T>
-    pycomet::data::vector_3d<T> transpose(
-      const pycomet::data::vector_3d<T>& array,
-      const pycomet::data::vector_1d<T>& order = {0,2,1}
+    tf2::data::vector_3d<T> transpose(
+      const tf2::data::vector_3d<T>& array,
+      const tf2::data::vector_1d<T>& order = {0,2,1}
     ) {
       // Handle empty input array
       if (array.empty() || array[0].empty() || array[0][0].empty()) {
-        return pycomet::data::vector_3d<T>();
+        return tf2::data::vector_3d<T>();
       }
       // Get dimensions
       const std::size_t dim1 = array.size();
       const std::size_t dim2 = array[0].size();
       const std::size_t dim3 = array[0][0].size();
       // Create a transposed array with the same dimensions
-      pycomet::data::vector_3d<T> transposed(
-        dim1, pycomet::data::vector_2d<T>(
-          dim2, pycomet::data::vector_1d<T>(
+      tf2::data::vector_3d<T> transposed(
+        dim1, tf2::data::vector_2d<T>(
+          dim2, tf2::data::vector_1d<T>(
             dim3
           )
         )
@@ -129,15 +129,15 @@ namespace pycomet {
      *          array will be returned.
      */
     template <typename T>
-    pycomet::data::vector_2d<T> transpose(
-      const pycomet::data::vector_2d<T>& array
+    tf2::data::vector_2d<T> transpose(
+      const tf2::data::vector_2d<T>& array
     ) {
       // Handle empty input array
       if (array.empty() || array[0].empty()) {
-        return pycomet::data::vector_2d<T>();
+        return tf2::data::vector_2d<T>();
       }
       // Convert the 2D array to a 3D array
-      pycomet::data::vector_3d<T> array_3d;
+      tf2::data::vector_3d<T> array_3d;
       array_3d.push_back(array);
       // Transpose the original array
       auto transposed_3d = transpose<T>(array_3d);
@@ -171,7 +171,7 @@ namespace pycomet {
       // Check if the dimensions are valid
       if (dim1 <= 0 || dim2 <= 0 || dim3 <= 0) {
         std::ostringstream message;
-        message << "\nFrom pycomet::ops::transpose():"
+        message << "\nFrom tf2::ops::transpose():"
                 << "\n> Invalid dimensions.";
         throw std::invalid_argument(message.str());
       }
@@ -180,7 +180,7 @@ namespace pycomet {
       auto size = dim1 * dim2 * dim3;
       if (array.size() != size) {
         std::ostringstream message;
-        message << "\nFrom pycomet::ops::transpose():"
+        message << "\nFrom tf2::ops::transpose():"
                 << "\n> Input array size doesn't match specified dimensions.";
         throw std::invalid_argument(message.str());
       }
@@ -263,7 +263,7 @@ namespace pycomet {
     ) {
       // Error message
       std::ostringstream message;
-      message << "From pycomet::ops::reshape(): ";
+      message << "From tf2::ops::reshape(): ";
       // Ensure shape is of size 2
       if (shape.size() != 2) {
         message << "\n> Shape argument must be a 2-element vector.";
@@ -325,6 +325,6 @@ namespace pycomet {
 
   } // namespace ops
 
-} // namespace pycomet
+} // namespace tf2
 
-#endif // pycomet_utils_ops_h_
+#endif // tf2_utils_ops_h_

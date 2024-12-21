@@ -1,14 +1,14 @@
-#ifndef pycomet_model_h
-#define pycomet_model_h
+#ifndef tf2_model_h
+#define tf2_model_h
 
 #include "includes.h"
 #include "utils.h"
 #include <cppflow/cppflow.h>
 
-namespace pycomet {
+namespace tf2 {
 
   /**
-   * @brief Class representing a TensorFlow-based PyCOMET model.
+   * @brief Class representing a TensorFlow-based TF2 model.
    */
   class model {
 
@@ -31,7 +31,7 @@ namespace pycomet {
     std::int32_t batch_size = -1;
 
     // IO operations
-    pycomet::data::list_tuple_vector<int64_t> ops;
+    tf2::data::list_tuple_vector<int64_t> ops;
 
     /**
      * @brief Check the availability of input/output operations
@@ -104,7 +104,7 @@ namespace pycomet {
      *         input data in the specified format.
      */
     template <typename T>
-    pycomet::data::list_tuple_tensor compose_inputs(
+    tf2::data::list_tuple_tensor compose_inputs(
       const std::vector<T>& inputs,
       const std::int32_t nb_pts
     );
@@ -232,6 +232,6 @@ namespace pycomet {
 
   };
 
-} // namespace pycomet
+} // namespace tf2
 
-#endif // pycomet_model_h
+#endif // tf2_model_h

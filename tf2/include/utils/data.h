@@ -1,16 +1,16 @@
-#ifndef pycomet_utils_data_h_
-#define pycomet_utils_data_h_
+#ifndef tf2_utils_data_h_
+#define tf2_utils_data_h_
 
 #include "../includes.h"
 #include <cppflow/cppflow.h>
 
-namespace pycomet {
+namespace tf2 {
 
   /**
-   * @brief Namespace containing custom data structures for PyCOMET.
+   * @brief Namespace containing custom data structures for TF2.
    *
    * The data namespace defines custom data structures used in
-   * the PyCOMET library. Two primary structures are defined:
+   * the TF2 library. Two primary structures are defined:
    *
    * 1. list_tuple_tensor: A vector of tuples, where each tuple consists
    *    of a string identifier and a corresponding TensorFlow tensor.
@@ -19,7 +19,7 @@ namespace pycomet {
    *    of a string identifier and a vector of a specified type T.
    *
    * These structures are designed to facilitate the manipulation
-   * and organization of data within the PyCOMET library.
+   * and organization of data within the TF2 library.
    */
   namespace data {
 
@@ -34,7 +34,7 @@ namespace pycomet {
      * identifier and a vector of a specified type T.
      *
      * This structure is often used for storing input/output data
-     * associated with PyCOMET operations.
+     * associated with TF2 operations.
      *
      * @tparam T The type of data stored in the vector.
      */
@@ -76,6 +76,6 @@ namespace pycomet {
 
   } // namespace data
 
-} // namespace pycomet
+} // namespace tf2
 
-#endif // pycomet_utils_data_h_
+#endif // tf2_utils_data_h_

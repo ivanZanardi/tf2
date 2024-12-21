@@ -11,7 +11,7 @@ using json = nlohmann::json;
 // ====================================
 // Main function
 // ------------------------------------
-pycomet::model::model(
+tf2::model::model(
   const std::string inpfile
 ) {
   // Parse inputs from json file
@@ -42,7 +42,7 @@ pycomet::model::model(
     bool c2 = (this->outputs_dim.size() > 1);
     if (c1 || c2) {
       std::ostringstream message;
-      message << "\nFrom pycomet::model::model():"
+      message << "\nFrom tf2::model::model():"
               << "\n> Multi-input-multi-output models are "
               << "currently not supported for batched inference.";
       throw std::runtime_error(message.str());
@@ -52,7 +52,7 @@ pycomet::model::model(
 
 // Util functions
 // ------------------------------------
-void pycomet::model::parse_inputs(
+void tf2::model::parse_inputs(
   const std::string inpfile
 ) {
   // Initialize JSON object reader
@@ -78,7 +78,7 @@ void pycomet::model::parse_inputs(
   }
 };
 
-void pycomet::model::set_global_context(
+void tf2::model::set_global_context(
   const std::vector<std::string>& config
 ) {
   // Create new options with the new configuration
@@ -90,7 +90,7 @@ void pycomet::model::set_global_context(
   cppflow::get_global_context() = cppflow::context(opts);
 };
 
-void pycomet::model::get_ops_info() {
+void tf2::model::get_ops_info() {
   // Get operations identifiers
   std::vector<std::string> ops_id = this->tfmodel->get_operations();
   // Store identifier-shape pairs
@@ -104,7 +104,7 @@ void pycomet::model::get_ops_info() {
   }
 }
 
-std::vector<std::int32_t> pycomet::model::check_io_ops(
+std::vector<std::int32_t> tf2::model::check_io_ops(
   const std::vector<std::string> identifiers
 ) {
   std::vector<std::int64_t> dim;
@@ -125,7 +125,7 @@ std::vector<std::int32_t> pycomet::model::check_io_ops(
     }
     if (!found) {
       std::ostringstream message;
-      message << "\nFrom pycomet::model::check_io_ops():"
+      message << "\nFrom tf2::model::check_io_ops():"
               << "\n> Operation identifier '" << i_id << "' not found!"
               << "\n> Available options are:";
       for (const auto &op : this->ops) {
@@ -142,13 +142,13 @@ std::vector<std::int32_t> pycomet::model::check_io_ops(
 // Inputs/Outputs manipulations
 // ====================================
 template <typename T>
-pycomet::data::list_tuple_tensor pycomet::model::compose_inputs(
+tf2::data::list_tuple_tensor tf2::model::compose_inputs(
   const std::vector<T>& inputs,
   const std::int32_t nb_pts
 ) {
   // Get the number of inputs (single-/multi-inputs)
   const std::size_t nb_inp = this->inputs_dim.size();
-  pycomet::data::list_tuple_tensor x;
+  tf2::data::list_tuple_tensor x;
   // Loop over inputs
   std::int32_t delta, start = 0;
   for (std::size_t i = 0; i < nb_inp; ++i) {
@@ -157,7 +157,7 @@ pycomet::data::list_tuple_tensor pycomet::model::compose_inputs(
     std::vector<T> xi(inputs.begin() + start, inputs.begin() + start + delta);
     // > If column-major, reorder the input
     if (!this->rowmajor) {
-      pycomet::ops::invert_major<T>(xi, this->inputs_dim[i], nb_pts, true);
+      tf2::ops::invert_major<T>(xi, this->inputs_dim[i], nb_pts, true);
     }
     // Convert std::vector to cppflow::tensor with the proper shape
     cppflow::tensor tf_xi(xi, {nb_pts, this->inputs_dim[i]});
@@ -175,7 +175,7 @@ pycomet::data::list_tuple_tensor pycomet::model::compose_inputs(
 }
 
 template <typename T>
-void pycomet::model::compose_outputs(
+void tf2::model::compose_outputs(
   std::vector<T>& outputs,
   const std::vector<cppflow::tensor>& tf_outputs,
   const std::int32_t nb_pts
@@ -189,7 +189,7 @@ void pycomet::model::compose_outputs(
     std::vector<T> yi = tf_outputs[i].get_data<T>();
     // > If column-major, reorder the input
     if (!this->rowmajor) {
-      pycomet::ops::invert_major<T>(yi, nb_pts, this->outputs_dim[i], false);
+      tf2::ops::invert_major<T>(yi, nb_pts, this->outputs_dim[i], false);
     }
     // Move to outputs
     std::move(yi.begin(), yi.end(), outputs.begin() + index);
@@ -200,21 +200,21 @@ void pycomet::model::compose_outputs(
 // Calling
 // ====================================
 template <typename T>
-void pycomet::model::evaluate(
+void tf2::model::evaluate(
   const std::vector<T>& inputs,
   std::vector<T>& outputs,
   const std::int32_t nb_pts
 ) {
   // Inputs manipulation
-  auto x = pycomet::model::compose_inputs<T>(inputs, nb_pts);
+  auto x = tf2::model::compose_inputs<T>(inputs, nb_pts);
   // Perform inference
   auto y = (*this->tfmodel)(x, this->outputs_id);
   // Outputs manipulation
-  pycomet::model::compose_outputs<T>(outputs, y, nb_pts);
+  tf2::model::compose_outputs<T>(outputs, y, nb_pts);
 }
 
 template <typename T>
-void pycomet::model::call(
+void tf2::model::call(
   const std::vector<T>& inputs,
   std::vector<T>& outputs,
   const std::int32_t nb_pts
@@ -252,7 +252,7 @@ void pycomet::model::call(
       }
     } else {
       std::ostringstream message;
-      message << "\nFrom pycomet::model::call():"
+      message << "\nFrom tf2::model::call():"
               << "\n> Column-major ordered input data are "
               << "currently not supported for batched inference.";
       throw std::runtime_error(message.str());
@@ -261,7 +261,7 @@ void pycomet::model::call(
 }
 
 template <typename T>
-std::vector<T> pycomet::model::call(
+std::vector<T> tf2::model::call(
   const std::vector<T>& inputs,
   const std::int32_t nb_pts
 ) {
@@ -271,89 +271,89 @@ std::vector<T> pycomet::model::call(
 }
 
 template <typename T>
-std::vector<std::vector<T>> pycomet::model::call(
+std::vector<std::vector<T>> tf2::model::call(
   const std::vector<std::vector<T>>& inputs,
   const std::int32_t nb_pts
 ) {
   // Force column-major order
   this->rowmajor = false;
   // Flatten inputs
-  auto x = pycomet::ops::flatten<T>(inputs, true);
+  auto x = tf2::ops::flatten<T>(inputs, true);
   // Perform inference
   auto y = this->call<T>(x, nb_pts);
   // Reshape outputs
   std::vector<std::int32_t> shape = {nb_pts, this->out_tot_dim};
-  return pycomet::ops::reshape<T>(y, shape, true);
+  return tf2::ops::reshape<T>(y, shape, true);
 }
 
 // Explicit templates instantiation
 // ====================================
 // Single-precision floating-point format
 // ------------------------------------
-template pycomet::data::list_tuple_tensor pycomet::model::compose_inputs(
+template tf2::data::list_tuple_tensor tf2::model::compose_inputs(
   const std::vector<float>& inputs,
   const std::int32_t nb_pts
 );
 
-template void pycomet::model::compose_outputs(
+template void tf2::model::compose_outputs(
   std::vector<float>& outputs,
   const std::vector<cppflow::tensor>& tf_outputs,
   const std::int32_t nb_pts
 );
 
-template void pycomet::model::evaluate(
+template void tf2::model::evaluate(
   const std::vector<float>& inputs,
   std::vector<float>& outputs,
   const std::int32_t nb_pts
 );
 
-template void pycomet::model::call(
+template void tf2::model::call(
   const std::vector<float>& inputs,
   std::vector<float>& outputs,
   const std::int32_t nb_pts
 );
 
-template std::vector<float> pycomet::model::call(
+template std::vector<float> tf2::model::call(
   const std::vector<float>& inputs,
   const std::int32_t nb_pts
 );
 
-template std::vector<std::vector<float>> pycomet::model::call(
+template std::vector<std::vector<float>> tf2::model::call(
   const std::vector<std::vector<float>>& inputs,
   const std::int32_t nb_pts
 );
 
 // Double-precision floating-point format
 // ------------------------------------
-template pycomet::data::list_tuple_tensor pycomet::model::compose_inputs(
+template tf2::data::list_tuple_tensor tf2::model::compose_inputs(
   const std::vector<double>& inputs,
   const std::int32_t nb_pts
 );
 
-template void pycomet::model::compose_outputs(
+template void tf2::model::compose_outputs(
   std::vector<double>& outputs,
   const std::vector<cppflow::tensor>& tf_outputs,
   const std::int32_t nb_pts
 );
 
-template void pycomet::model::evaluate(
+template void tf2::model::evaluate(
   const std::vector<double>& inputs,
   std::vector<double>& outputs,
   const std::int32_t nb_pts
 );
 
-template void pycomet::model::call(
+template void tf2::model::call(
   const std::vector<double>& inputs,
   std::vector<double>& outputs,
   const std::int32_t nb_pts
 );
 
-template std::vector<double> pycomet::model::call(
+template std::vector<double> tf2::model::call(
   const std::vector<double>& inputs,
   const std::int32_t nb_pts
 );
 
-template std::vector<std::vector<double>> pycomet::model::call(
+template std::vector<std::vector<double>> tf2::model::call(
   const std::vector<std::vector<double>>& inputs,
   const std::int32_t nb_pts
 );

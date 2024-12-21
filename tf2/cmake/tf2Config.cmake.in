@@ -1,0 +1,14 @@
+# Set the package version
+set(tf2_VERSION "@PROJECT_VERSION@")
+
+# Set the package configuration variables
+set(tf2_FOUND 1)
+set(tf2_INCLUDE_DIR "@CMAKE_INSTALL_PREFIX@/include")
+set(tf2_INCLUDE_DIRS ${tf2_INCLUDE_DIR})
+set(tf2_LIBRARY_DIR "@CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@")
+
+# Find the library using the full path or HINTS
+find_library(tf2_LIBRARY NAMES tf2 HINTS ${tf2_LIBRARY_DIR})
+
+# Set the LIBRARIES variable
+set(tf2_LIBRARIES ${tf2_LIBRARY})
