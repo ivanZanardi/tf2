@@ -189,7 +189,7 @@ namespace tf2 {
       std::vector<T>& outputs,
       const std::int32_t nb_pts
     );
-  
+
     /**
      * @brief Perform a model inference using the provided inputs
      *        and return the outputs.

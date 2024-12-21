@@ -1,4 +1,4 @@
-module pcm_utils
+module tf2_utils
 
   use, intrinsic :: iso_c_binding
 
@@ -44,4 +44,4 @@ module pcm_utils
 #define tt real(8)
 #include "utils_t.f90"
 
-end module pcm_utils
+end module tf2_utils

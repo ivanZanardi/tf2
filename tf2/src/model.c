@@ -160,14 +160,14 @@ tf2::data::list_tuple_tensor tf2::model::compose_inputs(
       tf2::ops::invert_major<T>(xi, this->inputs_dim[i], nb_pts, true);
     }
     // Convert std::vector to cppflow::tensor with the proper shape
-    cppflow::tensor tf_xi(xi, {nb_pts, this->inputs_dim[i]});
+    cppflow::tensor xi_tf(xi, {nb_pts, this->inputs_dim[i]});
     // Move cppflow::tensor to GPU if CUDA available
-    auto on_gpu = tf_xi.device(true).find("GPU");
+    auto on_gpu = xi_tf.device(true).find("GPU");
     if ((this->tfmodel->is_cuda_available) && (on_gpu != std::string::npos)) {
-      tf_xi = cppflow::bitcast(tf_xi, tf_xi.dtype());
+      xi_tf = cppflow::bitcast(xi_tf, xi_tf.dtype());
     }
     // Make and append the tuple for i-th input
-    x.emplace_back(this->inputs_id[i], std::move(tf_xi));
+    x.emplace_back(this->inputs_id[i], std::move(xi_tf));
     // > Update the counter
     start += delta;
   }

@@ -3,10 +3,10 @@ cmake_minimum_required(VERSION 3.10)
 
 # Global
 # =====================================
-project(pycomet
+project(tf2
   VERSION 1.0
   LANGUAGES C CXX Fortran
-  DESCRIPTION "Physics-informed machine learning for scientific computing and operator discovery"
+  DESCRIPTION "Deploy TensorFlow models to Fortran"
 )
 
 
@@ -26,7 +26,7 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
 endif()
 if(CMAKE_CXX_STANDARD LESS 17)
-  LogWarning("Incompatible C++ standard ${CMAKE_CXX_STANDARD}. PyCOMET requires C++17")
+  LogWarning("Incompatible C++ standard ${CMAKE_CXX_STANDARD}. tf2 requires C++17")
 endif()
 
 

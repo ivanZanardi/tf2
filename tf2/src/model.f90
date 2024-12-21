@@ -1,4 +1,4 @@
-module pcm_model
+module tf2_model
 
   use, intrinsic :: iso_c_binding
 
@@ -106,4 +106,4 @@ module pcm_model
     call c_call_model_double(this%object, nb_pts, c_loc(inputs), c_loc(outputs))
   end subroutine call_model_double
 
-end module pcm_model
+end module tf2_model

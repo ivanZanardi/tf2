@@ -1,9 +1,9 @@
 // Test ODR violation
 
 // PyCOMET headers
-#include <pycomet.h>
+#include <tf2.h>
 
 int main() {
-    std::cout << pycomet::version() << std::endl;
+    std::cout << tf2::version() << std::endl;
     return 0;
 }

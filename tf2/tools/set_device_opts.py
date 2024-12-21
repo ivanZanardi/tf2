@@ -4,12 +4,11 @@ import tensorflow as tf
 
 # Inputs
 # =====================================
-# inpfile = './inpfile.json'
-inpfile = '/home/zanardi/Codes/ML/PyCOMET/pycomet/api/test/chemreac/model/inpfile.json'
+inpfile = "./inpfile.json"
 growth = True
 nb_threads = 8
 mem_fraction = 0.3
-visible_device_list = '0'
+visible_device_list = "0"
 
 
 # Main
@@ -33,15 +32,15 @@ def create_serialized_options(
   return list(map(hex, serialized))
 
 def main():
-  inpdata = json.load(open(inpfile, 'r'))
-  inpdata['config'] = create_serialized_options(
+  inpdata = json.load(open(inpfile, "r"))
+  inpdata["config"] = create_serialized_options(
     growth,
     nb_threads,
     mem_fraction,
     visible_device_list
   )
-  json.dump(inpdata, open(inpfile, 'w'), indent=4)
+  json.dump(inpdata, open(inpfile, "w"), indent=4)
 
 
-if (__name__ == '__main__'):
+if (__name__ == "__main__"):
   main()
