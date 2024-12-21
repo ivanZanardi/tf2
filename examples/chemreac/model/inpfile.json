@@ -1,0 +1,38 @@
+{
+    "path_to_model": "./model/SavedModel",
+    "inputs_id": [
+        "serving_default_input_1:0"
+    ],
+    "inputs_dim": [
+        "5"
+    ],
+    "outputs_id": [
+        "StatefulPartitionedCall:0"
+    ],
+    "outputs_dim": [
+        "4"
+    ],
+    "rowmajor": false,
+    "config": [
+        "0x10",
+        "0x8",
+        "0x28",
+        "0x8",
+        "0x32",
+        "0xe",
+        "0x9",
+        "0x33",
+        "0x33",
+        "0x33",
+        "0x33",
+        "0x33",
+        "0x33",
+        "0xd3",
+        "0x3f",
+        "0x20",
+        "0x1",
+        "0x2a",
+        "0x1",
+        "0x30"
+    ]
+}
