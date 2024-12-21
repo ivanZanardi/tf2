@@ -3,7 +3,7 @@ set -e
 
 load_python() {
   # Loading Python executable
-  export PYTHON_BIN="${HOME}/.conda/envs/pycomet.cpu.2/bin"
+  export PYTHON_BIN="${HOME}/.conda/envs/sciml/bin"
   PATH=${PYTHON_BIN}:$PATH
   # Set proper environmental variables
   export TF_CPP_MIN_LOG_LEVEL=3
