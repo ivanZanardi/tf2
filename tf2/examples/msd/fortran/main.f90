@@ -7,7 +7,7 @@ program main
   implicit none
 
   ! Declarations
-  character(64) :: prefix = "/home/zanardi/Codes/ML/PyCOMET/pycomet/api/pycomet/examples/msd/"
+  character(64) :: prefix = "/home/zanardi/Codes/ML/TF2/tf2/tf2/examples/msd/"
   character(32) :: inpfile = "fortran/inpfile.json"
   character(16) :: datafile = "data.csv"
   character(16) :: predfile = "fortran/pred.csv"
