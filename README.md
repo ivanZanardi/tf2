@@ -13,6 +13,8 @@ TF2 utilizes [CppFlow](https://github.com/serizba/cppflow/) and the [TensorFlow 
 
 ## Dependencies
 
+Before installing the required dependencies, check the official TensorFlow [compatibility matrix](https://www.tensorflow.org/install/source/) to ensure version compatibility with your system and build environment.
+
 * [TensorFlow C API](https://www.tensorflow.org/install/lang_c/) = 2.10.0
 
 ### GPU support
