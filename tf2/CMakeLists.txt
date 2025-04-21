@@ -19,6 +19,9 @@ include(LogMessage)
 ensure_out_of_source_build()
 setLogsOn()
 
+# Force library installation in 'lib'
+set(CMAKE_INSTALL_LIBDIR lib CACHE STRING "Install library dir" FORCE)
+
 
 # Set C++ version
 # =====================================
