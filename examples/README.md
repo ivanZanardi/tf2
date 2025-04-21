@@ -9,7 +9,7 @@ To run the examples in this folder, follow the steps below:
 
 1. **Install TF2**
 
-First, install the TF2 library by following the instructions provided in the main repository's [README](https://github.com/ivanZanardi/tf2/tree/main/README.md).
+First, install the TF2 library by following the instructions provided in the main repository's [README](https://github.com/ivanZanardi/tf2/tree/main/README.md) file.
 
 2. **Set Up the Environment**
 
