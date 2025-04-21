@@ -17,7 +17,7 @@ Next, configure your environment as shown in the provided `env.sh` script. This 
 
 3. **Generate the Input File**  
 
-Generate the input file for the saved TensorFlow model using the script provided in the [`tools`](https://github.com/ivanZanardi/tf2/tree/main/tf2/tools/) module.
+If needed, generate the input file for the saved TensorFlow model using the script provided in the [`tools`](https://github.com/ivanZanardi/tf2/tree/main/tf2/tools/) module.
 
 3. **Run the Examples**
 
