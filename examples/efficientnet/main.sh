@@ -4,11 +4,15 @@ set -e
 
 source ./../env.sh
 
-text="> Generating TF model ..."
+text="> Unpacking TF model ..."
 print_text "\${text}" "="
-load_python
-rm -rf model
-python model.py
+cwd=${PWD}
+model_path=${cwd}/SavedModel
+if [ ! -d "${model_path}" ]; then
+  cd ${cwd}/
+  unzip ${model_path}.zip
+  cd ${cwd}
+fi
 
 text="> Compiling ..."
 print_text "\${text}" "="
@@ -23,4 +27,4 @@ print_text "\${text}" "="
 text="> Cleaning ..."
 print_text "\${text}" "="
 make clean
-rm -rf model
+rm -rf ${model_path}

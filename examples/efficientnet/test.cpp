@@ -5,7 +5,7 @@ int main() {
 
   // Parameters
   int nb_iters = -1;
-  std::string MODEL_PATH = "model";
+  std::string MODEL_PATH = "SavedModel";
   std::string IMAGE_PATH = "image.jpg";
 
   // Input tensor
