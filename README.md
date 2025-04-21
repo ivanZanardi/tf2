@@ -3,7 +3,7 @@
 **TensorFlow to Fortran**
 
 ---
-TF2 enables the integration of TensorFlow models into C++/Fortran projects seamlessly, without the need for TensorFlow installation or compilation. Explore the [examples](https://github.com/ivanZanardi/tf2/tree/main/api/tf2/examples) to understand how to incorporate a TensorFlow `tf.Model` into your C++/Fortran project.
+TF2 enables the integration of TensorFlow models into C++/Fortran projects seamlessly, without the need for TensorFlow installation or compilation. Explore the [examples](https://github.com/ivanZanardi/tf2/tree/main/examples) to understand how to incorporate a TensorFlow `tf.Model` into your C++/Fortran project.
 
 TF2 utilizes [CppFlow](https://github.com/serizba/cppflow/) and the [TensorFlow C API](https://www.tensorflow.org/install/lang_c) to execute models. This project simplifies the management and execution of models in C++/Fortran, handling concerns about void, malloc, or free operations. With TF2, you can effortlessly:
 
@@ -12,6 +12,8 @@ TF2 utilizes [CppFlow](https://github.com/serizba/cppflow/) and the [TensorFlow 
 * Perform tensor manipulation directly from C++
 
 ## Dependencies
+
+Before installing the required dependencies, check the official TensorFlow [compatibility matrix](https://www.tensorflow.org/install/source/) to ensure version compatibility with your system and build environment.
 
 * [TensorFlow C API](https://www.tensorflow.org/install/lang_c/) = 2.10.0
 
