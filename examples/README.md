@@ -15,6 +15,10 @@ First, install the TF2 library by following the instructions provided in the mai
 
 Next, configure your environment as shown in the provided `env.sh` script. This script defines a few helpful bash functions that use the [`module`](https://github.com/envmodules/modules/tree/main) system to load the installed version of TF2.
 
+3. **Generate the Input File**  
+
+Generate the input file for the saved TensorFlow model using the script provided in the [`tools`](https://github.com/ivanZanardi/tf2/tree/main/tf2/tools/) module.
+
 3. **Run the Examples**
 
 Once the environment is set up, you can run the examples using the `main.sh` script found in each example directory.
