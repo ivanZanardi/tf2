@@ -1,4 +1,3 @@
-import sys
 import tensorflow as tf
 
 model = tf.keras.applications.EfficientNetB0()
