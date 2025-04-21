@@ -3,7 +3,7 @@
 **TensorFlow to Fortran**
 
 ---
-#### Running the Examples
+### Running the Examples
 
 To run the examples in this folder, follow the steps below:
 
