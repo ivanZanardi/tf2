@@ -22,7 +22,8 @@ load_tf2() {
   export TF_ENABLE_ONEDNN_OPTS=1
   export TF_NUM_INTEROP_THREADS=1
   export TF_NUM_INTRAOP_THREADS=1
-  export CUDA_VISIBLE_DEVICES=1
+  export CUDA_VISIBLE_DEVICES=0
+  export TF_FORCE_GPU_ALLOW_GROWTH=1
 }
 
 print_text() {
