@@ -16,7 +16,7 @@ fi
 
 text="> Compiling ..."
 print_text "\${text}" "="
-load_tf2 true
+load_tf2 false
 make clean
 make
 

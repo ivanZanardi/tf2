@@ -15,7 +15,7 @@ load_tf2() {
   if ${use_gpu}; then
     module load tf2/1.0-gcc-9.3.0-cuda-11.2.0-tf-2.10.0-gpu
   else
-    module load tf2/1.0-gcc-11.3.0-tf-2.10.0-cpu
+    module load tf2/1.0-gcc-12.3.0-tf-2.10.0-cpu
   fi
   # Set proper environmental variables
   export TF_CPP_MIN_LOG_LEVEL=3
