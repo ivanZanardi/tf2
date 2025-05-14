@@ -11,7 +11,7 @@ load_python() {
 
 load_tf2() {
   eval use_gpu="${1}"
-  # Loading the PyCOMET module
+  # Loading the TF2 module
   if ${use_gpu}; then
     module load tf2/1.0-gcc-9.3.0-cuda-11.2.0-tf-2.10.0-gpu
   else

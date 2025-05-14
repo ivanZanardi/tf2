@@ -71,4 +71,4 @@ To install TF2, follow these steps after downloading the dependencies:
 
 ## License
 
-TF2 is distributed under the [NCSA Open Source License](https://github.com/ivanZanardi/tf2/blob/main/LICENSE). You are welcome to utilize, modify, and contribute to this project in accordance with the terms outlined in the license.
+TF2 is distributed under the [MIT license](https://github.com/ivanZanardi/tf2/blob/main/LICENSE). You are welcome to utilize, modify, and contribute to this project in accordance with the terms outlined in the license.
