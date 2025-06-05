@@ -71,6 +71,23 @@ To install TF2, follow these steps after downloading the dependencies:
   make install
   ```
 
+## Citation
+
+If you use this code or find this work useful in your research, please cite us:
+
+```bibtex
+@software{ivan_zanardi_2025_15571515,
+  author       = {Ivan Zanardi},
+  title        = {TF2: TensorFlow to Fortran},
+  month        = {06},
+  year         = {2025},
+  publisher    = {Zenodo},
+  version      = {v0.1.0},
+  doi          = {10.5281/zenodo.15571515},
+  url          = {https://doi.org/10.5281/zenodo.15571515}
+}
+```
+
 ## License
 
 TF2 is distributed under the [MIT License](https://github.com/ivanZanardi/tf2/blob/main/LICENSE). You are welcome to utilize, modify, and contribute to this project in accordance with the terms outlined in the license
